@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE FBType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
+<FBType Name="CAMERA_CAPTURE" OpcUa="DEVICE.SENSOR" >
+	<InterfaceList>
+		<EventInputs>
+			<Event Name="INIT" Type="Event" Comment="">
+			</Event>
+			<Event Name="READ" Type="Event" Comment="">
+			</Event>
+            <Event Name="STOP" Type="Event" Comment="">
+			</Event>
+		</EventInputs>
+		<EventOutputs>
+            <Event Name="INIT_O" Type="Event"/>
+			<Event Name="READ_O" Type="Event" Comment="">
+				<With Var="Image"/>
+			</Event>
+		</EventOutputs>
+         <InputVars>
+            <VarDeclaration Name="RES_HEIGHT" Type="INT" Comment="Image height resolution"/>
+            <VarDeclaration Name="RES_WIDTH" Type="INT" Comment="Image width resolution"/>
+            <VarDeclaration Name="DELAY" Type="REAL" Comment="Delay before capturing (seconds)"/>
+        </InputVars>
+		<OutputVars>
+			<VarDeclaration Name="Image" Type="STRING"/>
+		</OutputVars>
+	</InterfaceList>
+</FBType>
