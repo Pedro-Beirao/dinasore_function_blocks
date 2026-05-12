@@ -47,12 +47,12 @@ class RemoteSync(base_sync.BaseSync):
                 username=self.username,
                 password=self.password
             )
-            
+
             sftp = paramiko.SFTPClient.from_transport(t)
 
             # get list of local fbs
             scanned_fbs = self.scantree(self.master_fbs_path)
-            
+
             for fb in scanned_fbs:
                 correct_path = fb.path.replace('\\', '/')
                 dest_path = self.path + correct_path.replace(self.master_fbs_path, '')
@@ -61,7 +61,7 @@ class RemoteSync(base_sync.BaseSync):
                 except FileNotFoundError:
                     # file does not exist on remote
                     self.force_put(sftp, correct_path, dest_path, self.path)
-                else: 
+                else:
                     if fb.stat().st_mtime > dest_fb_stats.st_mtime:
                         # local file is updated
                         sftp.put(correct_path, dest_path)
@@ -107,8 +107,5 @@ class RemoteSync(base_sync.BaseSync):
                 except IOError:
                     # directory already exists
                     pass
-                
+
         sftp.put(src, trgt)
-
-
-    

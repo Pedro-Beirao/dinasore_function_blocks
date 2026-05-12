@@ -14,7 +14,7 @@ class FBSync():
             'dinasore-path' not in dinasore:
             logging.warning('Can\'t synchronize without dinasore path.')
             return
-        
+
         address = dinasore.get('address')
 
         port = 22
@@ -35,8 +35,5 @@ class FBSync():
         strategies = self.strategy.split(' ')
         if 'wipe' in strategies:
             sync_obj.wipe()
-        
+
         sync_obj.synchronize()
-
-        
-
